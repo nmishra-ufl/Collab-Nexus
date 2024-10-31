@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+Test set: net.codejava.UserRepositoryTests
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.385 s <<< FAILURE! - in net.codejava.UserRepositoryTests
+testFindByEmail  Time elapsed: 0.131 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at net.codejava.UserRepositoryTests.testFindByEmail(UserRepositoryTests.java:43)
+Caused by: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at net.codejava.UserRepositoryTests.testFindByEmail(UserRepositoryTests.java:43)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'codejavadb.users' doesn't exist
+	at net.codejava.UserRepositoryTests.testFindByEmail(UserRepositoryTests.java:43)
+
+testCreateUser  Time elapsed: 0.032 s  <<< ERROR!
+org.springframework.dao.InvalidDataAccessResourceUsageException: could not execute statement; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not execute statement
+	at net.codejava.UserRepositoryTests.testCreateUser(UserRepositoryTests.java:32)
+Caused by: org.hibernate.exception.SQLGrammarException: could not execute statement
+	at net.codejava.UserRepositoryTests.testCreateUser(UserRepositoryTests.java:32)
+Caused by: java.sql.SQLSyntaxErrorException: Table 'codejavadb.users' doesn't exist
+	at net.codejava.UserRepositoryTests.testCreateUser(UserRepositoryTests.java:32)
+
