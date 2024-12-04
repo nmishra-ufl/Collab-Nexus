@@ -1,3 +1,5 @@
+net\codejava\Group.class
+net\codejava\ProfileController.class
 net\codejava\AppErrorController.class
 net\codejava\User.class
 net\codejava\CustomUserDetailsService.class
@@ -6,3 +8,5 @@ net\codejava\AppController.class
 net\codejava\SpringBootRegistrationLoginApplication.class
 net\codejava\CustomUserDetails.class
 net\codejava\UserRepository.class
+net\codejava\GroupRepository.class
+net\codejava\GroupController.class
