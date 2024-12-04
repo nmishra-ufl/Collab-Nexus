@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/groups")
@@ -47,9 +48,48 @@ public class GroupController {
         User user = userRepo.findByEmail(email);
         Group group = groupRepo.findById(groupId).orElse(null);
         if (group != null && user != null) {
-            group.getMembers().add(user);
+            group.getUsers().add(user);
+            user.getGroups().add(group);
+
             groupRepo.save(group);
+            userRepo.save(user);
         }
         return "redirect:/groups/browse";
     }
+
+    @GetMapping("/my-groups")
+    public String viewMyGroups(Model model, Principal principal) {
+        String email = principal.getName();
+        User currentUser = userRepo.findByEmail(email);
+
+        if (currentUser != null) {
+            // Fetch groups the user is part of
+            Set<Group> myGroups = currentUser.getGroups();
+            model.addAttribute("myGroups", myGroups);
+        } else {
+            model.addAttribute("myGroups", null);
+        }
+
+        return "my_groups";
+    }
+
+    @PostMapping("/leave/{groupId}")
+    public String leaveGroup(@PathVariable Long groupId, Principal principal) {
+        String email = principal.getName();
+        User currentUser = userRepo.findByEmail(email);
+
+        if (currentUser != null) {
+            Group group = groupRepo.findById(groupId).orElse(null);
+
+            if (group != null) {
+                group.getUsers().remove(currentUser);
+                currentUser.getGroups().remove(group);
+                groupRepo.save(group);
+                userRepo.save(currentUser);
+            }
+        }
+        return "redirect:/groups/my-groups";
+    }
+
+
 }
