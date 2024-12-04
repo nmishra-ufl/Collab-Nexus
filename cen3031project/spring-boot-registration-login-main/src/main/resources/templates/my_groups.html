@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>My Groups</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+  <h1>My Groups</h1>
+
+  <!-- Display a message if the user is not part of any groups -->
+  <div th:if="${myGroups == null || #lists.isEmpty(myGroups)}">
+    <p>You are not part of any groups yet.</p>
+  </div>
+
+  <!-- Display groups if the user is part of any -->
+  <div class="row" th:if="${myGroups != null && !#lists.isEmpty(myGroups)}">
+    <div class="col-md-4" th:each="group : ${myGroups}">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${group.name}">Group Name</h5>
+          <p class="card-text"><strong>Type:</strong> <span th:text="${group.type}">Type</span></p>
+          <p class="card-text"><strong>Description:</strong> <span th:text="${group.description}">Description</span></p>
+          <!-- Leave Group Button -->
+          <form th:action="@{/groups/leave/{id}(id=${group.id})}" method="post">
+            <button type="submit" class="btn btn-danger">Leave Group</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a th:href="@{/users}" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+</body>
+</html>
