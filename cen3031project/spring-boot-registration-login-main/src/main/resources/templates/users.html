@@ -7,15 +7,66 @@
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 	<style>
+		body {
+			background-color: #e9f2fb; /* Light blue background */
+			font-family: Arial, sans-serif;
+		}
+
 		.profile-header {
-			background-color: #f8f9fa;
+			background-color: #007bff; /* Primary blue banner */
+			color: white;
 			padding: 20px;
 			text-align: center;
-			border-bottom: 2px solid #e0e0e0;
+			border-radius: 5px;
+			margin-bottom: 20px;
 		}
 
 		.profile-header h1 {
-			font-size: 1.8em;
+			font-size: 2em;
+			margin-bottom: 10px;
+		}
+
+		.profile-header p {
+			font-size: 1.2em;
+			margin-bottom: 20px;
+		}
+
+		.btn-section {
+			display: flex;
+			justify-content: center;
+			gap: 15px;
+			flex-wrap: wrap;
+			margin-bottom: 20px;
+		}
+
+		.btn-section .btn {
+			padding: 10px 20px;
+			font-size: 0.9em;
+		}
+
+		/* Updated style for "Back to Homepage" button */
+		.btn-info {
+			background-color: #007bff; /* Matching blue */
+			border-color: #007bff; /* Matching blue border */
+			color: white; /* White text */
+		}
+
+		.btn-info:hover {
+			background-color: #0056b3; /* Darker blue on hover */
+			border-color: #0056b3; /* Matching border on hover */
+		}
+
+		.search-bar {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		.search-bar input {
+			padding: 10px;
+			border: 1px solid #007bff; /* Blue border for input */
+			border-radius: 5px;
+			width: 100%;
+			max-width: 400px;
 		}
 
 		.users-list {
@@ -24,41 +75,63 @@
 
 		.user-card {
 			padding: 15px;
-			border: 1px solid #ddd;
+			border: 1px solid #007bff; /* Blue border for user cards */
 			border-radius: 5px;
-			margin-bottom: 10px;
+			background-color: white;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+			margin-bottom: 15px;
+			transition: transform 0.2s, box-shadow 0.2s;
 		}
 
 		.user-card:hover {
-			background-color: #f8f9fa;
+			transform: translateY(-5px);
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 		}
 
-		.search-bar {
-			margin-bottom: 20px;
-			width: 100%;
-			max-width: 400px;
+		.user-card h5 {
+			font-size: 1.2em;
+			font-weight: bold;
+			color: #007bff; /* Blue text for user names */
+			margin-bottom: 10px;
+		}
+
+		.user-card p {
+			font-size: 0.9em;
+			color: #555;
+		}
+
+		.footer {
+			text-align: center;
+			margin-top: 30px;
+			color: #007bff; /* Blue footer text */
+			font-size: 0.9em;
 		}
 	</style>
 </head>
 <body>
 <div class="container">
-	<!-- Profile Section -->
+	<!-- Profile Header -->
 	<div class="profile-header">
 		<h1>Welcome, <span th:text="${#request.userPrincipal?.principal?.fullName}">User</span>!</h1>
 		<p>Your Dashboard</p>
-		<!-- Links Section -->
-		<a th:href="@{/profile}" class="btn btn-secondary">Edit My Profile</a>
-		<a th:href="@{/}" class="btn btn-secondary">Back to Homepage</a>
-		<a th:href="@{/groups/create}" class="btn btn-secondary">Create a Group</a>
-		<a th:href="@{/groups/browse}" class="btn btn-secondary">Browse Groups</a>
+	</div>
+
+	<!-- Button Section -->
+	<div class="btn-section">
+		<a th:href="@{/profile}" class="btn btn-primary">Edit My Profile</a>
+		<a th:href="@{/}" class="btn btn-info">Back to Homepage</a>
+		<a th:href="@{/groups/create}" class="btn btn-primary">Create a Group</a>
+		<a th:href="@{/groups/browse}" class="btn btn-primary">Browse Groups</a>
+		<a th:href="@{/groups/my-groups}" class="btn btn-primary">My Groups</a>
+		<a th:href="@{/logout}" class="btn btn-danger">Logout</a>
 	</div>
 
 	<!-- Search Bar -->
-	<div class="search-bar text-center">
-		<input type="text" id="userSearch" class="form-control" placeholder="Search users...">
+	<div class="search-bar">
+		<input type="text" id="userSearch" class="form-control" placeholder="Search users by name...">
 	</div>
 
-	<!-- List of Users -->
+	<!-- Users List -->
 	<div class="users-list">
 		<h2>Other Users</h2>
 		<div class="row" id="userList">
@@ -70,6 +143,11 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<!-- Footer -->
+	<div class="footer">
+		<p>© 2024 Talent Sphere - All Rights Reserved</p>
 	</div>
 </div>
 
