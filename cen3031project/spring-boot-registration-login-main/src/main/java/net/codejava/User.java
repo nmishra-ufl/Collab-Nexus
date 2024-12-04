@@ -17,22 +17,48 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users")
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false, unique = true, length = 45)
 	private String email;
-	
+
 	@Column(nullable = false, length = 64)
 	private String password;
-	
+
 	@Column(name = "first_name", nullable = false, length = 20)
 	private String firstName;
-	
+
 	@Column(name = "last_name", nullable = false, length = 20)
 	private String lastName;
+
+	@Column(name = "skills", length = 255)
+	private String skills;
+
+	@Column(name = "experience", length = 255)
+	private String experience;
+
+	@Column(name = "availability", length = 50)
+	private String availability;
+
+	@Column(name = "bio", length = 500)
+	private String bio;
+
+	// Getters and Setters
+	public String getSkills() { return skills; }
+	public void setSkills(String skills) { this.skills = skills; }
+
+	public String getExperience() { return experience; }
+	public void setExperience(String experience) { this.experience = experience; }
+
+	public String getAvailability() { return availability; }
+	public void setAvailability(String availability) { this.availability = availability; }
+
+	public String getBio() { return bio; }
+	public void setBio(String bio) { this.bio = bio; }
+
 
 	/*public Long getId() {
 		return id;
