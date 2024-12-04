@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Browse Groups</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+  <h1>Browse Groups</h1>
+  <div class="row" th:each="group : ${groups}">
+    <div class="col-md-4">
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title" th:text="${group.name}">Group Name</h5>
+          <p class="card-text"><strong>Type:</strong> <span th:text="${group.type}">Type</span></p>
+          <p class="card-text"><strong>Description:</strong> <span th:text="${group.description}">Description</span></p>
+          <form th:action="@{/groups/join/{groupId}(groupId=${group.id})}" method="post">
+            <button type="submit" class="btn btn-primary">Join Group</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <a th:href="@{/users}" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+</body>
+</html>

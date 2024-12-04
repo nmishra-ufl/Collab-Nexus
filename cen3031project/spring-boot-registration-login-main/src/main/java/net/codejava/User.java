@@ -5,73 +5,61 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
 @Entity
 @Table(name = "users")
 public class User {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(nullable = false, unique = true, length = 45)
 	private String email;
-	
+
 	@Column(nullable = false, length = 64)
 	private String password;
-	
+
 	@Column(name = "first_name", nullable = false, length = 20)
 	private String firstName;
-	
+
 	@Column(name = "last_name", nullable = false, length = 20)
 	private String lastName;
 
-	/*public Long getId() {
-		return id;
-	}
+	@Column(name = "skills", length = 255)
+	private String skills;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	@Column(name = "experience", length = 255)
+	private String experience;
 
-	public String getEmail() {
-		return email;
-	}
+	@Column(name = "availability", length = 50)
+	private String availability;
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	@Column(name = "bio", length = 500)
+	private String bio;
 
-	public String getPassword() {
-		return password;
-	}
+	@ManyToMany(mappedBy = "users") // Reference the relationship defined in Group
+	private Set<Group> groups = new HashSet<>();
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	// Getters and Setters
+	public String getSkills() { return skills; }
+	public void setSkills(String skills) { this.skills = skills; }
 
-	public String getFirstName() {
-		return firstName;
-	}
+	public String getExperience() { return experience; }
+	public void setExperience(String experience) { this.experience = experience; }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+	public String getAvailability() { return availability; }
+	public void setAvailability(String availability) { this.availability = availability; }
 
-	public String getLastName() {
-		return lastName;
-	}
+	public String getBio() { return bio; }
+	public void setBio(String bio) { this.bio = bio; }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}*/
+	public Set<Group> getGroups() { return groups; }
+	public void setGroups(Set<Group> groups) { this.groups = groups; }
 
 }
