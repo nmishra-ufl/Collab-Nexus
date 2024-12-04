@@ -66,15 +66,3 @@ public class Group {
     public void setUsers(Set<User> users) { this.users = users; }
 
 }
-
-/*
-
-
-    public Set<User> getMembers() {
-        return members;
-    }
-
-    public void setMembers(Set<User> members) {
-        this.members = members;
-    }
- */
