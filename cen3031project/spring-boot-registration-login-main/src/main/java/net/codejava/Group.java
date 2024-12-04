@@ -15,19 +15,19 @@ public class Group {
     @Column(nullable = false, unique = true, length = 45)
     private String name;
 
-    @Column(nullable = false, unique = true, length = 45)
+    @Column(nullable = false, length = 45)
     private String type;
 
-    @Column(nullable = false, length = 64)
+    @Column(length = 500)
     private String description;
 
     @ManyToMany
     @JoinTable(
-            name = "group_users",
-            joinColumns = @JoinColumn(name = "group_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id")
+            name = "user_group_mapping", // Join table name
+            joinColumns = @JoinColumn(name = "group_id"), // Foreign key for Group
+            inverseJoinColumns = @JoinColumn(name = "user_id") // Foreign key for User
     )
-    private Set<User> members = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 
     // Getters and Setters
     public Long getId() {
@@ -62,6 +62,14 @@ public class Group {
         this.description = description;
     }
 
+    public Set<User> getUsers() { return users; }
+    public void setUsers(Set<User> users) { this.users = users; }
+
+}
+
+/*
+
+
     public Set<User> getMembers() {
         return members;
     }
@@ -69,4 +77,4 @@ public class Group {
     public void setMembers(Set<User> members) {
         this.members = members;
     }
-}
+ */
