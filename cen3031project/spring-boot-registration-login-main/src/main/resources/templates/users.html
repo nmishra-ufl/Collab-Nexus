@@ -46,10 +46,11 @@
 	<div class="profile-header">
 		<h1>Welcome, <span th:text="${#request.userPrincipal?.principal?.fullName}">User</span>!</h1>
 		<p>Your Dashboard</p>
-		<!-- Link to Profile Creation/Edit Form -->
+		<!-- Links Section -->
 		<a th:href="@{/profile}" class="btn btn-secondary">Edit My Profile</a>
-		<!-- Link Back to Homepage -->
 		<a th:href="@{/}" class="btn btn-secondary">Back to Homepage</a>
+		<a th:href="@{/groups/create}" class="btn btn-secondary">Create a Group</a>
+		<a th:href="@{/groups/browse}" class="btn btn-secondary">Browse Groups</a>
 	</div>
 
 	<!-- Search Bar -->
