@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="ISO-8859-1">
@@ -46,6 +46,67 @@
 	</div>
 	<div>
 		<h3><a th:href="@{/}">Back</a></h3>
+	</div>
+</div>
+</body>
+</html>-->
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>User Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		.profile-header {
+			background-color: #f8f9fa;
+			padding: 20px;
+			text-align: center;
+			border-bottom: 2px solid #e0e0e0;
+		}
+
+		.profile-header h1 {
+			font-size: 1.8em;
+		}
+
+		.users-list {
+			margin-top: 20px;
+		}
+
+		.user-card {
+			padding: 15px;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			margin-bottom: 10px;
+		}
+
+		.user-card:hover {
+			background-color: #f8f9fa;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<!-- Profile Section -->
+	<div class="profile-header">
+		<h1>Welcome, <span th:text="${#request.userPrincipal?.principal?.fullName}">User</span>!</h1>
+		<p>Your Dashboard</p>
+	</div>
+
+	<!-- List of Users -->
+	<div class="users-list">
+		<h2>Other Users</h2>
+		<div class="row">
+			<div class="col-md-4" th:each="user : ${listUsers}">
+				<div class="user-card">
+					<h5 th:text="${user.firstName} + ' ' + ${user.lastName}">Full Name</h5>
+					<p th:text="${user.email}">Email</p>
+					<a th:href="@{/user/profile/{id}(id=${user.id})}" class="btn btn-primary btn-sm">View Profile</a>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 </body>
