@@ -5,15 +5,20 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "groups")
+@Table(name = "usergroup")
 public class Group {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true, length = 45)
     private String name;
-    private String type; // Project or Internship
+
+    @Column(nullable = false, unique = true, length = 45)
+    private String type;
+
+    @Column(nullable = false, length = 64)
     private String description;
 
     @ManyToMany
