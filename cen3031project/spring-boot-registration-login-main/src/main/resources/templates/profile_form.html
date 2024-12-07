@@ -1,81 +1,70 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Edit Profile</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-    <style>
-        /* Styling for the form container */
-        .form-container {
-            max-width: 600px;
-            margin: 50px auto;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background-color: #f8f9fa;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+	<meta charset="ISO-8859-1">
+	<title>Registration Success</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		/* Page styling */
+		body {
+			background-color: #f4f6f9;
+			font-family: Arial, sans-serif;
+		}
 
-        /* Header styling for the form */
-        .form-container h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            color: #343a40;
-        }
+		/* Container styling for success message */
+		.success-container {
+			margin-top: 100px;
+			background-color: white;
+			padding: 40px;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			text-align: center;
+		}
 
-        /* Label styling for form fields */
-        label {
-            font-weight: bold;
-        }
+		/* Styling for the success message text */
+		.success-container h3 {
+			font-size: 2em;
+			color: #28a745; /* Green text */
+			margin-bottom: 20px;
+		}
 
-        /* Primary button styling */
-        .btn-primary {
-            width: 100%;
-            margin-top: 15px;
-        }
+		/* Link styling for the login button */
+		.success-container h4 a {
+			text-decoration: none;
+			font-size: 1.2em;
+			color: #007bff; /* Bootstrap primary blue */
+		}
 
-        /* Secondary button styling */
-        .btn-secondary {
-            width: 100%;
-            margin-top: 10px;
-        }
-    </style>
+		/* Hover effect for the login link */
+		.success-container h4 a:hover {
+			color: #0056b3; /* Darker blue on hover */
+		}
+
+		/* Checkmark icon styling */
+		.icon {
+			font-size: 4em;
+			color: #28a745;
+			margin-bottom: 20px;
+		}
+	</style>
 </head>
 <body>
-<div class="container">
-    <!-- Container for the profile editing form -->
-    <div class="form-container">
-        <h1>Edit Your Profile</h1>
-        <!-- Form for editing profile -->
-        <form th:action="@{/profile}" th:object="${user}" method="post">
-            <!-- Skills input field -->
-            <div class="form-group">
-                <label for="skills">Skills</label>
-                <input type="text" id="skills" class="form-control" th:field="*{skills}" placeholder="Enter your skills (e.g., Java, Python)" />
-            </div>
-            <!-- Experience input field -->
-            <div class="form-group">
-                <label for="experience">Experience</label>
-                <textarea id="experience" class="form-control" th:field="*{experience}" rows="3" placeholder="Describe your experience"></textarea>
-            </div>
-            <!-- Availability input field -->
-            <div class="form-group">
-                <label for="availability">Availability</label>
-                <input type="text" id="availability" class="form-control" th:field="*{availability}" placeholder="E.g., Available from Jan 2025" />
-            </div>
-            <!-- Bio input field -->
-            <div class="form-group">
-                <label for="bio">Bio</label>
-                <textarea id="bio" class="form-control" th:field="*{bio}" rows="4" placeholder="Tell us about yourself"></textarea>
-            </div>
-            <!-- Save button -->
-            <button type="submit" class="btn btn-primary">Save Profile</button>
-            <!-- Back to dashboard button -->
-            <a th:href="@{/users}" class="btn btn-secondary">Back to Dashboard</a>
-        </form>
-    </div>
+<!-- Main container for the success message -->
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+	<div class="success-container">
+		<!-- Checkmark icon -->
+		<div class="icon">
+			&#x2714; <!-- Unicode checkmark -->
+		</div>
+		<!-- Success message -->
+		<h3>Registration Successful!</h3>
+		<!-- Link to login page -->
+		<h4>
+			<a th:href="@{/login}">Click here to Login</a>
+		</h4>
+	</div>
 </div>
 </body>
 </html>
