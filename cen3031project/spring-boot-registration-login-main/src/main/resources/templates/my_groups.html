@@ -4,15 +4,14 @@
   <title>My Groups</title>
   <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
   <style>
+    /* Styling for the page and header */
     body {
       background-color: #f4f6f9;
       font-family: Arial, sans-serif;
     }
-
     .container {
       margin-top: 50px;
     }
-
     .header-section {
       background-color: #007bff;
       color: white;
@@ -22,58 +21,48 @@
       margin-bottom: 30px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-
     .header-section h1 {
       font-size: 2.5em;
       font-weight: bold;
       margin: 0;
     }
-
     .header-section p {
       font-size: 1.2em;
       margin-top: 10px;
       color: #dfe9f5;
     }
-
     .card {
       border: none;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       transition: transform 0.2s, box-shadow 0.2s;
     }
-
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
     }
-
     .card-title {
       color: #007bff;
       font-size: 1.5em;
     }
-
     .card-text {
       font-size: 1em;
       color: #555;
     }
-
     .btn-danger {
       background-color: #dc3545;
       border-color: #dc3545;
     }
-
     .btn-danger:hover {
       background-color: #c82333;
       border-color: #bd2130;
     }
-
     .empty-message {
       text-align: center;
       color: #6c757d;
       margin-top: 20px;
       font-size: 1.2em;
     }
-
     .back-button {
       display: block;
       margin: 30px auto 0;
@@ -83,23 +72,28 @@
 </head>
 <body>
 <div class="container">
+  <!-- Header Section -->
   <div class="header-section">
     <h1>My Groups</h1>
     <p>Explore the groups you've joined</p>
   </div>
 
+  <!-- Message if no groups are joined -->
   <div class="empty-message" th:if="${myGroups == null || #lists.isEmpty(myGroups)}">
     <p>You are not part of any groups yet.</p>
   </div>
 
+  <!-- Display list of groups -->
   <div class="row" th:if="${myGroups != null && !#lists.isEmpty(myGroups)}">
     <div class="col-md-4" th:each="group : ${myGroups}">
       <div class="card mb-4">
         <div class="card-body">
+          <!-- Group Name -->
           <h5 class="card-title" th:text="${group.name}">Group Name</h5>
+          <!-- Group Type -->
           <p class="card-text"><strong>Type:</strong> <span th:text="${group.type}">Type</span></p>
+          <!-- Group Description -->
           <p class="card-text"><strong>Description:</strong> <span th:text="${group.description}">Description</span></p>
-
           <!-- Leave Group Button -->
           <form th:action="@{/groups/leave/{id}(id=${group.id})}" method="post">
             <button type="submit" class="btn btn-danger btn-sm">Leave Group</button>
@@ -109,6 +103,7 @@
     </div>
   </div>
 
+  <!-- Back to Dashboard Button -->
   <div class="back-button">
     <a th:href="@{/users}" class="btn btn-secondary">Back to Dashboard</a>
   </div>
