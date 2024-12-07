@@ -10,13 +10,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.security.Principal;
 
+/**
+ * Controller to handle user profile-related operations.
+ * Includes profile creation, editing, and viewing other user profiles.
+ */
 @Controller
 public class ProfileController {
 
     @Autowired
     private UserRepository userRepo;
 
-    // Display the profile creation/edit form
+    /**
+     * Displays the profile creation/edit form for the logged-in user.
+     *
+     * @param model The model to bind the user object.
+     * @param principal The currently logged-in user's details.
+     * @return The name of the profile form template.
+     */
     @GetMapping("/profile")
     public String showProfileForm(Model model, Principal principal) {
         String email = principal.getName();
@@ -25,7 +35,13 @@ public class ProfileController {
         return "profile_form";
     }
 
-    // Save the profile details and redirect to the dashboard
+    /**
+     * Saves the profile details of the logged-in user and redirects to the dashboard.
+     *
+     * @param user The updated user object from the form.
+     * @param principal The currently logged-in user's details.
+     * @return Redirects to the user dashboard.
+     */
     @PostMapping("/profile")
     public String saveProfile(@ModelAttribute User user, Principal principal) {
         String email = principal.getName();
@@ -39,11 +55,16 @@ public class ProfileController {
             userRepo.save(existingUser);
         }
 
-        // Redirect to the dashboard (list of users)
         return "redirect:/users";
     }
 
-    // Display other users' profiles
+    /**
+     * Displays the profile of another user.
+     *
+     * @param id The ID of the user whose profile is to be viewed.
+     * @param model The model to bind the user's details.
+     * @return The name of the user profile template.
+     */
     @GetMapping("/user/profile/{id}")
     public String viewUserProfile(@PathVariable Long id, Model model) {
         User user = userRepo.findById(id).orElse(null);
