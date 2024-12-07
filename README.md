@@ -14,8 +14,7 @@ Created by Nikhil Mishra, Faizan Haque, and Asrith Yerramesetty
 2. [Prerequisites](#prerequisites)
 3. [Installation](#installation)
 4. [Usage](#usage)
-5. [Contributing](#contributing)
-6. [License](#license)
+5. [License](#license)
 
 ---
 
@@ -83,27 +82,6 @@ Follow the steps below to set up the project on your local machine:
 - **Register:** Create a new user account.
 - **Login:** Access the system using your credentials.
 - **Explore:** Utilize the platform to connect with peers and find internship opportunities.
-
----
-
-## Contributing
-
-Contributions are welcome! To contribute:
-
-1. Fork the repository.
-2. Create a new branch for your feature:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add new feature"
-   ```
-4. Push your branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Open a pull request.
 
 ---
 
