@@ -33,7 +33,7 @@
 	</style>
 </head>
 <body>
-<!-- Navbar -->
+<!-- Navbar Section -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 	<a class="navbar-brand" href="#">UF Opportunities</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,6 +41,7 @@
 	</button>
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav ml-auto">
+			<!-- Links to dashboard, register, and login -->
 			<li class="nav-item"><a class="nav-link" th:href="@{/users}">Dashboard</a></li>
 			<li class="nav-item"><a class="nav-link" th:href="@{/register}">Register</a></li>
 			<li class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a></li>
@@ -53,16 +54,18 @@
 	<div class="container">
 		<h1>Welcome to the UF Talent Sphere!</h1>
 		<p>Discover and connect with companies, other students, and find projects!</p>
+		<!-- Call to action for registration -->
 		<a class="btn btn-primary btn-lg" th:href="@{/register}">Get Started</a>
 	</div>
 </div>
 
-<!-- Main Content Section -->
+<!-- Additional Options -->
 <div class="container text-center mt-5">
 	<h3>Explore More Options</h3>
 	<div class="row mt-4">
 		<div class="col-md-4">
 			<div class="card">
+				<!-- Option for user dashboard -->
 				<h5 class="card-title">User Directory</h5>
 				<p class="card-text">Already logged in? View your dashboard, and join groups or edit your profile</p>
 				<a class="btn btn-outline-primary" th:href="@{/users}">View Dashboard</a>
@@ -70,6 +73,7 @@
 		</div>
 		<div class="col-md-4">
 			<div class="card">
+				<!-- Option for registration -->
 				<h5 class="card-title">Register Today</h5>
 				<p class="card-text">Join us and start exploring UF opportunities.</p>
 				<a class="btn btn-outline-primary" th:href="@{/register}">Register</a>
@@ -77,6 +81,7 @@
 		</div>
 		<div class="col-md-4">
 			<div class="card">
+				<!-- Option for login -->
 				<h5 class="card-title">Already Registered?</h5>
 				<p class="card-text">Log in to access your account and more features.</p>
 				<a class="btn btn-outline-primary" th:href="@{/login}">Login</a>
