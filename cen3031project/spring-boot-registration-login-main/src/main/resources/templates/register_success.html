@@ -7,11 +7,13 @@
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 	<style>
+		/* Page styling */
 		body {
 			background-color: #f4f6f9;
 			font-family: Arial, sans-serif;
 		}
 
+		/* Container styling for success message */
 		.success-container {
 			margin-top: 100px;
 			background-color: white;
@@ -21,22 +23,26 @@
 			text-align: center;
 		}
 
+		/* Styling for the success message text */
 		.success-container h3 {
 			font-size: 2em;
 			color: #28a745; /* Green text */
 			margin-bottom: 20px;
 		}
 
+		/* Link styling for the login button */
 		.success-container h4 a {
 			text-decoration: none;
 			font-size: 1.2em;
 			color: #007bff; /* Bootstrap primary blue */
 		}
 
+		/* Hover effect for the login link */
 		.success-container h4 a:hover {
 			color: #0056b3; /* Darker blue on hover */
 		}
 
+		/* Checkmark icon styling */
 		.icon {
 			font-size: 4em;
 			color: #28a745;
@@ -45,12 +51,16 @@
 	</style>
 </head>
 <body>
+<!-- Main container for the success message -->
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
 	<div class="success-container">
+		<!-- Checkmark icon -->
 		<div class="icon">
-			&#x2714;
+			&#x2714; <!-- Unicode checkmark -->
 		</div>
+		<!-- Success message -->
 		<h3>Registration Successful!</h3>
+		<!-- Link to login page -->
 		<h4>
 			<a th:href="@{/login}">Click here to Login</a>
 		</h4>
