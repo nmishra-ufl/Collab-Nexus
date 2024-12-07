@@ -6,12 +6,55 @@
 	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
 	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<style>
+		body {
+			background-color: #f4f6f9;
+			font-family: Arial, sans-serif;
+		}
+
+		.success-container {
+			margin-top: 100px;
+			background-color: white;
+			padding: 40px;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			text-align: center;
+		}
+
+		.success-container h3 {
+			font-size: 2em;
+			color: #28a745; /* Green text */
+			margin-bottom: 20px;
+		}
+
+		.success-container h4 a {
+			text-decoration: none;
+			font-size: 1.2em;
+			color: #007bff; /* Bootstrap primary blue */
+		}
+
+		.success-container h4 a:hover {
+			color: #0056b3; /* Darker blue on hover */
+		}
+
+		.icon {
+			font-size: 4em;
+			color: #28a745;
+			margin-bottom: 20px;
+		}
+	</style>
 </head>
 <body>
-	<div class="container text-center">
-		<h3>You have signed up successfully!</h3>
-		<h4><a th:href="@{/login}">Click here to Login</a></h4>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+	<div class="success-container">
+		<div class="icon">
+			&#x2714;
+		</div>
+		<h3>Registration Successful!</h3>
+		<h4>
+			<a th:href="@{/login}">Click here to Login</a>
+		</h4>
 	</div>
-	
+</div>
 </body>
 </html>
