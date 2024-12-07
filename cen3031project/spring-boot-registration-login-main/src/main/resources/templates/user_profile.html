@@ -1,18 +1,81 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+  <meta charset="UTF-8">
   <title>User Profile</title>
+  <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+  <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  <style>
+    .profile-container {
+      margin-top: 50px;
+    }
+
+    .profile-card {
+      background-color: #ffffff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .profile-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-header h1 {
+      font-size: 2em;
+      font-weight: bold;
+    }
+
+    .profile-header p {
+      font-size: 1.2em;
+      color: #6c757d;
+    }
+
+    .profile-details h5 {
+      font-size: 1.1em;
+      margin-top: 20px;
+    }
+
+    .btn-back {
+      margin-top: 30px;
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-  <h1>User Profile</h1>
-  <p><strong>Name:</strong> <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span></p>
-  <p><strong>Email:</strong> <span th:text="${user.email}"></span></p>
-  <p><strong>Skills:</strong> <span th:text="${user.skills}"></span></p>
-  <p><strong>Experience:</strong> <span th:text="${user.experience}"></span></p>
-  <p><strong>Availability:</strong> <span th:text="${user.availability}"></span></p>
-  <p><strong>Bio:</strong> <span th:text="${user.bio}"></span></p>
-  <a th:href="@{/users}" class="btn btn-primary">Back to Dashboard</a>
+<div class="container profile-container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <!-- Profile Card -->
+      <div class="profile-card">
+        <!-- Profile Header -->
+        <div class="profile-header">
+          <h1 th:text="${user.firstName} + ' ' + ${user.lastName}">User Name</h1>
+          <p th:text="${user.email}">user@example.com</p>
+        </div>
+        <hr />
+        <!-- Profile Details -->
+        <div class="profile-details">
+          <h5><strong>Skills:</strong></h5>
+          <p th:text="${user.skills ?: 'No skills listed'}">No skills listed</p>
+
+          <h5><strong>Experience:</strong></h5>
+          <p th:text="${user.experience ?: 'No experience provided'}">No experience provided</p>
+
+          <h5><strong>Availability:</strong></h5>
+          <p th:text="${user.availability ?: 'Not available'}">Not available</p>
+
+          <h5><strong>Bio:</strong></h5>
+          <p th:text="${user.bio ?: 'No bio available'}">No bio available</p>
+        </div>
+        <!-- Back Button -->
+        <div class="text-center btn-back">
+          <a th:href="@{/users}" class="btn btn-primary">Back to Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </body>
 </html>
