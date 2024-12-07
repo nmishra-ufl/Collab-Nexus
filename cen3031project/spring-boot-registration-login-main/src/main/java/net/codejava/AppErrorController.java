@@ -54,14 +54,6 @@ public class AppErrorController implements ErrorController{
      * @param request
      * @return
      */
-   /* @RequestMapping(value = ERROR_PATH)
-    @ResponseBody
-    public ResponseEntity<Map<String, Object>> error(HttpServletRequest request) {
-        Map<String, Object> body = getErrorAttributes(request, getTraceParameter(request));
-        HttpStatus status = getStatus(request);
-        System.out.println(" error()  Status ="+ status);
-        return new ResponseEntity<Map<String, Object>>(body, status);
-    }*/
 
     /**
      * Returns the path of the error page.
@@ -106,25 +98,6 @@ public class AppErrorController implements ErrorController{
         }
         return HttpStatus.INTERNAL_SERVER_ERROR;
     }
-
-
-    /*@RequestMapping("/error")
-    public String handleError(HttpServletRequest request) {
-        Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-
-        if (status != null) {
-            Integer statusCode = Integer.valueOf(status.toString());
-
-            if(statusCode == HttpStatus.NOT_FOUND.value()) {
-                return "error-404";
-            }
-            else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                return "error-500";
-            }
-        }
-        return "error";
-    }*/
-
 
     @ResponseBody
     @RequestMapping("/error")
